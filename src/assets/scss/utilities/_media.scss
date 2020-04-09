@@ -1,0 +1,19 @@
+@media (max-width: 480px) {
+  .img {
+    background-position: center 3rem !important;
+    background-size: cover !important;
+    height: 100vw !important;
+
+    .content-mobile {
+      padding: 0 5rem;
+    }
+    p {
+      font-size: 1.15rem;
+    }
+    .border- {
+      &left-light {
+        border-left: 0;
+      }
+    }
+  }
+}

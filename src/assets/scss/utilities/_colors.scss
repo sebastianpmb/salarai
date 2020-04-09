@@ -1,0 +1,58 @@
+// /* Colors */
+#app {
+  .text- {
+    &yellow {
+      color: $yellow;
+    }
+    &primary {
+      color: $primary;
+    }
+    &secondary {
+      color: $secondary;
+    }
+    &black {
+      color: $black;
+    }
+    &green-light-1 {
+      color: $green-light-1 !important;
+    }
+  }
+
+  .bg- {
+    &yellow {
+      background-color: $yellow;
+    }
+    &primary {
+      background-color: $primary;
+    }
+    &secondary {
+      background-color: $secondary;
+    }
+  }
+
+  .white {
+    color: #fff !important;
+  }
+  .yellow {
+    color: $yellow;
+  }
+  .black {
+    color: #000 !important;
+  }
+
+  .opacity-75 {
+    opacity: 0.75;
+  }
+
+  .bg-black {
+    background-color: $black;
+  }
+
+  .bg-white {
+    background-color: $white;
+  }
+
+  .text-warning {
+    color: $yellow;
+  }
+}

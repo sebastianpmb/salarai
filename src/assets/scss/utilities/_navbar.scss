@@ -1,0 +1,57 @@
+#app {
+  .navbar {
+    padding: 0;
+  }
+  .somos {
+    width: 65%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    position: relative;
+    .navbar-brand-secondary {
+      position: absolute;
+      left: 60px;
+    }
+    .logo-secondary {
+      position: absolute;
+      left: 30px;
+    }
+  }
+  .collapse {
+    &.navbar-collapse {
+      width: 20%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #app {
+    nav {
+      &.navbar {
+        &.border-bottom-light {
+          border-bottom: 0 !important;
+        }
+        .navbar-toggler {
+          padding: 1.2rem 1.7rem;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          .navbar-toggler-icon {
+            display: inline-block;
+            // width: 1.5em;
+            // height: 1.5em;
+            vertical-align: middle;
+            content: "";
+            position: absolute;
+            left: 17px;
+            top: 0.6em;
+            width: 1.2em;
+            height: 0.09em;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0.35em 0 0 rgba(0, 0, 0, 0.3),
+              0 0.7em 0 0 rgba(0, 0, 0, 0.3);
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}

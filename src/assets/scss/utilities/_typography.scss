@@ -1,0 +1,72 @@
+#app {
+  // .custom-font {
+  //   font-family: "BigNoodle", "Open Sans", sans-serif !important;
+  //   letter-spacing: 0.2rem;
+  // }
+  p {
+    letter-spacing: -0.48px;
+    font-size: 1.15rem;
+  }
+
+  h1 {
+    font-size: 5rem !important;
+    letter-spacing: -1.6px;
+    line-height: 5rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+    letter-spacing: -0.96px;
+    line-height: 3.5rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -0.96px;
+  }
+
+  h4 {
+    font-size: 1.55rem;
+    line-height: 2rem;
+    letter-spacing: -0.48px;
+  }
+
+  .light {
+    font-weight: 300 !important;
+  }
+
+  .bold {
+    font-weight: 600 !important;
+  }
+
+  .extra-bold {
+    font-weight: 800 !important;
+  }
+  strong {
+    font-weight: 800 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #app {
+    h1 {
+      font-size: 3.2rem !important;
+      line-height: 3.8rem !important;
+    }
+    h3 {
+      font-size: 1.4rem !important;
+      line-height: 1.7rem !important;
+    }
+    h4 {
+      font-size: 1.15rem !important;
+      letter-spacing: -0.48px;
+      line-height: 1.7rem;
+    }
+    p {
+      &.percent {
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+}

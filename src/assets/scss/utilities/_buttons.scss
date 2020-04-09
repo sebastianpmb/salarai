@@ -1,0 +1,215 @@
+/* Buttons */
+.btn {
+  > a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+  &:not(a) {
+    padding: 1rem;
+    // &.btn-block {
+    //   padding: 0;
+    // }
+  }
+  &.btn-primary {
+    background-color: $primary;
+    border-color: $primary;
+    color: $secondary;
+  }
+  &.btn-primary:hover {
+    background-color: $primary;
+    filter: brightness(80%);
+    color: $secondary;
+    // border-color: #fff;
+  }
+  &.btn-secondary {
+    background-color: $secondary;
+    border-color: $secondary;
+    color: $white;
+    &:hover {
+      background-color: $secondary;
+      filter: brightness(120%);
+      color: $white;
+    }
+  }
+  &.btn-success {
+    background-color: $success;
+    border-color: $success;
+    color: $white;
+  }
+}
+
+.question {
+  button {
+    &:focus {
+      outline: none;
+    }
+    &:focus,
+    &:not(:disabled):not(.disabled):active:focus,
+    &:active {
+      box-shadow: none;
+    }
+    &:hover {
+      background-color: $secondary;
+      transition: all 0.2s linear;
+      span {
+        color: $white;
+      }
+    }
+    &.vs-button-primary {
+      &.vs-button-border {
+        border: 1px solid $secondary;
+        span {
+          color: $secondary;
+        }
+        &.isActive {
+          color: $white;
+        }
+        &.btnOtion {
+          &.btn-orientation {
+            width: 46px;
+          }
+        }
+        &:hover {
+          background-color: $secondary;
+          transition: all 0.3s linear;
+          span {
+            color: $white;
+          }
+        }
+      }
+      &.vs-button-filled {
+        background: $primary;
+      }
+    }
+
+    &.btnOtion,
+    &.btnOtionList {
+      &.isActive {
+        span {
+          &.vs-button-backgroundx {
+            background-color: $secondary;
+          }
+          // color: $white;
+        }
+      }
+      &.vs-button-null {
+        &.vs-button-border {
+          border: 1px solid $primary;
+          padding: 0.5rem 1.4rem !important;
+          span {
+            color: $primary;
+          }
+        }
+      }
+    }
+    &.btnOtionList {
+      &.isActive {
+        span {
+          &.vs-button-backgroundx {
+            background-color: $primary;
+          }
+          color: $primary;
+        }
+      }
+      &.vs-button-primary {
+        &.vs-button-flat {
+          border: 1px solid $primary;
+          padding: 0.5rem 0.9rem !important;
+          &:hover {
+            background: $secondary;
+            span {
+              color: $white;
+            }
+          }
+          span {
+            color: $secondary;
+          }
+          &.isActive {
+            span {
+              &.vs-button-backgroundx {
+                background-color: $primary;
+              }
+              color: $white;
+            }
+          }
+          span {
+            &.vs-button-backgroundx {
+              background: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+            }
+            // color: $white;
+          }
+          // &.vs-button-border {
+          //   .vs-button-backgroundx {
+          //   }
+          // }
+
+          .vs-button-backgroundx {
+            background-color: $primary;
+            color: $white;
+            &:focus,
+            &:active {
+              background-color: $primary;
+              color: $white;
+            }
+            &span {
+              background-color: $primary;
+              color: $white;
+              &:focus,
+              &:active {
+                background-color: $primary;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+      span {
+        color: $primary;
+      }
+    }
+  }
+  .q-buttonlist-answer {
+    button {
+      &.btnOtionList {
+        margin: {
+          right: 5px;
+          top: 5px;
+        }
+      }
+    }
+  }
+  .question-navegation {
+    .nav-question {
+      width: 83px;
+    }
+    .navegation-orientation {
+      .vs-button-border {
+        span {
+          &.vs-button-backgroundx {
+            background-color: transparent !important;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+.vs-select--item {
+  &.activex {
+    color: $primary;
+    background: $white;
+  }
+}
+@media (max-width: 768px) {
+  #app {
+    .question {
+      .question-navegation {
+        .btn {
+          width: 83px;
+        }
+      }
+    }
+  }
+}
