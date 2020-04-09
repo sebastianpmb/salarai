@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 
-  state: {    
+    state: {    
+        guestData: {},
         surveyStruct: {},
         currentChapter: 0,
         currentReq: 0,
@@ -19,6 +20,9 @@ export default new Vuex.Store({
         answers:[]
   },
     mutations: {
+        SET_GuestData(state, g) {
+            state.guestData = g;
+        },
         SET_QtUsers(state, v) {
             state.qtUsers = v;
         },

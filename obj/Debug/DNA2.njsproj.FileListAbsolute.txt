@@ -1,2 +1,4 @@
 C:\Dev\Revenue\cadastrabasquete\obj\Debug\DNA2.njsprojAssemblyReference.cache
 C:\Dev\Revenue\cadastrabasquete\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Dev\Revenue\salarai\obj\Debug\DNA2.njsprojAssemblyReference.cache
+C:\Dev\Revenue\salarai\bin\Microsoft.NodejsTools.WebRole.dll

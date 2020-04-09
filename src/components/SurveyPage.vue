@@ -270,13 +270,15 @@
                   <!-- <div v-if="getShowBtnOk"> -->
                   <!-- Descomentar linha acima -->
                   <div>
-                    <div class="form-group">
-                      <button
-                        type="button"
-                        class="btn btn-secondary btn-block mt-5 mb-5"
-                        v-on:click="submit"
-                      >Avançar</button>
-                    </div>
+                      <div class="form-group">                         
+                          <button type="button"
+                                  class="btn btn-secondary btn-block mt-5 mb-5"
+                                  v-on:click="submit"
+                                  v-show="getShowBtnOk"
+                                  >
+                              Avançar
+                          </button>
+                      </div>
                   </div>
                 </div>
               </div>
