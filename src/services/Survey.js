@@ -1,62 +1,41 @@
 ﻿/// <reference path="../fanbase/Config.js" />
-import { baseDomain, baseEnv, baseSurveyID } from "../fanbase/Config.js";
+import { baseDomain, baseEnv, baseSurveyID, baseProjectID } from "../fanbase/Config.js";
 
 import axios from "axios";
 
 const baseUrl = `${baseDomain}/${baseEnv}`;
 
 export class Users {
-  constructor() {}
+    constructor() { }
 
-  login(user, pwd) {
-    return new Promise((resolve, reject) => {
-      const cmd = `${baseUrl}/Login?User=${user}&Pwd=${pwd}`;
-      axios.get(cmd).then(
-        r => {
-          if (r.data.header.codigo == 1) {
-            resolve(true);
-          } else {
-            reject(r.data.header.msg);
-          }
-        },
-        err => {
-          reject(err);
-        }
-      );
-    });
-  }
+    login(user, pwd) {
+        return new Promise((resolve, reject) => {
+            const cmd = `${baseUrl}/Login?User=${user}&Pwd=${pwd}`;
+            axios.get(cmd).then(
+                r => {
+                    if (r.data.header.codigo == 1) {
+                        resolve(true);
+                    } else {
+                        reject(r.data.header.msg);
+                    }
+                },
+                err => {
+                    reject(err);
+                }
+            );
+        });
+    }
 }
 
 export class Survey {
-  constructor() {}
+    constructor() { }
 
-  Start(Cpf, Mobile) {
-    return new Promise((resolve, reject) => {
-      const cmd = `${baseUrl}/Start`;
-
-      axios
-        .post(cmd, { cpf: Cpf, mobile: Mobile, surveyID: baseSurveyID })
-        .then(
-          r => {
-            if (r.data.header.codigo == 1) {
-              resolve(r.data.data);
-            } else {
-              reject(r.data.header.msg);
-            }
-          },
-          err => {
-            reject(err);
-          }
-        );
-    });
-  }
-
-    End(userSurveyId) {
+    Start(Cpf, Mobile) {
         return new Promise((resolve, reject) => {
-            const cmd = `${baseUrl}/EndSurvey?surveyId=${userSurveyId}`;
+            const cmd = `${baseUrl}/Start`;
 
             axios
-                .post(cmd)
+                .post(cmd, { userCode: Cpf, mobile: Mobile, surveyID: baseSurveyID, projectID: baseProjectID })
                 .then(
                     r => {
                         if (r.data.header.codigo == 1) {
@@ -72,112 +51,134 @@ export class Survey {
         });
     }
 
-  CheckStart(Cpf) {
-    return new Promise((resolve, reject) => {
-      const cmd = `${baseUrl}/CheckStart`;
-      var Mobile = "";
-      axios
-        .post(cmd, { cpf: Cpf, mobile: Mobile, surveyID: baseSurveyID })
-        .then(
-          r => {
-            if (r.data.header.codigo == 1) {
-              resolve(r.data.data);
-            } else {
-              reject(r.data.header.msg);
-            }
-          },
-          err => {
-            reject(err);
-          }
-        );
-    });
-  }
 
-  GetData() {
-    return new Promise((resolve, reject) => {
-      const cmd = `${baseUrl}/datas/${baseSurveyID}`;
-      axios.get(cmd).then(
-        r => {
-          if (r.data.header.codigo == 1) {
-            resolve(r.data.data);
-          } else {
-            reject(r.data.header.msg);
-          }
-        },
-        err => {
-          reject(err);
-        }
-      );
-    });
-  }
+    EndSurvey(userSurveyId) {
+        return new Promise((resolve, reject) => {
+            //const cmd = `${baseUrl}/EndSurvey?surveyId=${userSurveyId}`;            
+            const cmd = `${baseUrl}/EndSurvey/${userSurveyId}`;
+            axios
+                .post(cmd)
+                .then(
+                    r => {
+                        if (r.data.header.codigo == 1) {
+                            resolve("ok");
+                        } else {
+                            reject(r.data.header.msg);
+                        }
+                    },
+                    err => {
+                        reject(err);
+                    }
+                );
+        });
+    }
 
-  AddAnswer(userSurveyId, questionId, answer) {
-    return new Promise((resolve, reject) => {
-      const cmd = `${baseUrl}/Answer`;
+    CheckStart(Cpf) {
+        return new Promise((resolve, reject) => {
+            const cmd = `${baseUrl}/CheckStart`;
+            var Mobile = "";
+            axios
+                .post(cmd, { userCode: Cpf, mobile: Mobile, surveyID: baseSurveyID, projectID: baseProjectID })
+                .then(
+                    r => {
+                        if (r.data.header.codigo == 1) {
+                            resolve(r.data.data);
+                        } else {
+                            reject(r.data.header.msg);
+                        }
+                    },
+                    err => {
+                        reject(err);
+                    }
+                );
+        });
+    }
 
-      axios
-        .post(cmd, {
-          userSurveyId: userSurveyId,
-          questionId: questionId,
-          answer: answer
-        })
-        .then(
-          r => {
-            if (r.data.header.codigo == 1) {
-              resolve(r.data.header.msg);
-            } else {
-              reject(r.data.header.msg);
-            }
-          },
-          err => {
-            reject(err);
-          }
-        );
-    });
-  }
+    GetData() {
+        return new Promise((resolve, reject) => {
+            const cmd = `${baseUrl}/datas/${baseSurveyID}`;
+            axios.get(cmd).then(
+                r => {
+                    if (r.data.header.codigo == 1) {
+                        resolve(r.data.data);
+                    } else {
+                        reject(r.data.header.msg);
+                    }
+                },
+                err => {
+                    reject(err);
+                }
+            );
+        });
+    }
 
-  SaveAnswers(userSurveyId, req, chap, answers) {
-    return new Promise((resolve, reject) => {
-      const cmd = `${baseUrl}/saveanswers`;
+    AddAnswer(userSurveyId, questionId, answer) {
+        return new Promise((resolve, reject) => {
+            const cmd = `${baseUrl}/Answer`;
 
-      axios
-        .post(cmd, {
-          userSurveyId: userSurveyId,
-          req: req,
-          chap: chap,
-          answers: answers
-        })
-        .then(
-          r => {
-            if (r.data.header.codigo == 1) {
-              resolve(r.data.header.msg);
-            } else {
-              reject(r.data.header.msg);
-            }
-          },
-          err => {
-            reject(err);
-          }
-        );
-    });
-  }
+            axios
+                .post(cmd, {
+                    userSurveyId: userSurveyId,
+                    questionId: questionId,
+                    answer: answer
+                })
+                .then(
+                    r => {
+                        if (r.data.header.codigo == 1) {
+                            resolve(r.data.header.msg);
+                        } else {
+                            reject(r.data.header.msg);
+                        }
+                    },
+                    err => {
+                        reject(err);
+                    }
+                );
+        });
+    }
+
+    SaveAnswers(userSurveyId, req, chap, answers) {
+        return new Promise((resolve, reject) => {
+            const cmd = `${baseUrl}/saveanswers`;
+
+            axios
+                .post(cmd, {
+                    userSurveyId: userSurveyId,
+                    req: req,
+                    chap: chap,
+                    answers: answers
+                })
+                .then(
+                    r => {
+                        if (r.data.header.codigo == 1) {
+                            resolve(r.data.header.msg);
+                        } else {
+                            reject(r.data.header.msg);
+                        }
+                    },
+                    err => {
+                        reject(err);
+                    }
+                );
+        });
+    }
 }
 
 export class utils {
-  constructor() {}
+    constructor() { }
 
-  getCep(cep) {
-    return new Promise((resolve, reject) => {
-      if (cep.length == 8) {
-        axios.get(`https://viacep.com.br/ws/${cep}/json/`).then(
-          response => {
-            resolve(response.data);
-          },
-          error => {
-            reject(error);
-          }
-        );
-      }
-    });
-  }
+    getCep(cep) {
+        return new Promise((resolve, reject) => {
+            if (cep.length == 8) {
+                axios.get(`https://viacep.com.br/ws/${cep}/json/`).then(
+                    response => {
+                        resolve(response.data);
+                    },
+                    error => {
+                        reject(error);
+                    }
+                );
+            }
+        });
+    }
 }
